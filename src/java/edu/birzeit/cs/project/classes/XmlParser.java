@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.birzeit.cs.web.project.classes;
+package edu.birzeit.cs.project.classes;
 
 /**
  *
  * @author jamal
  */
-public class xmlParser {
+public class XmlParser {
     
 }

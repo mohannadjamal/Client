@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.birzeit.cs.web.project.classes;
+package edu.birzeit.cs.project.classes;
 
 /**
  *
  * @author jamal
  */
-public class disease {
+public class Disease {
     private int id;
     private String name;
     private int[] medicineIds;
@@ -17,7 +17,7 @@ public class disease {
     private String majorSymptom;
     private String minorSymptom;
 
-    public disease(int id, String name, int[] medicineIds, String cause, String majorSymptom, String minorSymptom) {
+    public Disease(int id, String name, int[] medicineIds, String cause, String majorSymptom, String minorSymptom) {
         this.id = id;
         this.name = name;
         this.medicineIds = medicineIds;

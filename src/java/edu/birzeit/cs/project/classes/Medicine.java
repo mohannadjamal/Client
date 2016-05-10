@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.birzeit.cs.web.project.classes;
+package edu.birzeit.cs.project.classes;
 
 /**
  *
  * @author jamal
  */
-public class medicine {
+public class Medicine {
     private int id;
     private String name;
     private double price;
     private String contents;
 
-    public medicine(int id, String name, double price, String contents) {
+    public Medicine(int id, String name, double price, String contents) {
         this.id = id;
         this.name = name;
         this.price = price;
