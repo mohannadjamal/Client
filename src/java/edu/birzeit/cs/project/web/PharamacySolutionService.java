@@ -36,4 +36,15 @@ public class PharamacySolutionService {
         // Get the list of medicines for the disease from its id
         return null;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "Purchase")
+    public String Purchase(@WebParam(name = "medicineid") int medicineid) {
+        //Purchase a medicine
+        //TODO write your implementation code here:
+        return null;
+    }
+
 }
