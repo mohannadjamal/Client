@@ -10,5 +10,32 @@ package edu.birzeit.cs.web.project.classes;
  * @author jamal
  */
 public class medicine {
-    
+    private int id;
+    private String name;
+    private double price;
+    private String contents;
+
+    public medicine(int id, String name, double price, String contents) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.contents = contents;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
 }
