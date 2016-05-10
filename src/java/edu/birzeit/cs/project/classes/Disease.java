@@ -5,6 +5,8 @@
  */
 package edu.birzeit.cs.project.classes;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jamal
@@ -12,12 +14,12 @@ package edu.birzeit.cs.project.classes;
 public class Disease {
     private int id;
     private String name;
-    private int[] medicineIds;
+    private ArrayList<Integer> medicineIds;
     private String cause;
     private String majorSymptom;
-    private String minorSymptom;
+    private ArrayList<String> minorSymptom;
 
-    public Disease(int id, String name, int[] medicineIds, String cause, String majorSymptom, String minorSymptom) {
+    public Disease(int id, String name, ArrayList<Integer> medicineIds, String cause, String majorSymptom, ArrayList<String> minorSymptom) {
         this.id = id;
         this.name = name;
         this.medicineIds = medicineIds;
@@ -25,6 +27,8 @@ public class Disease {
         this.majorSymptom = majorSymptom;
         this.minorSymptom = minorSymptom;
     }
+
+
 
     public int getId() {
         return id;
@@ -42,11 +46,11 @@ public class Disease {
         return majorSymptom;
     }
 
-    public int[] getMedicineIds() {
+    public ArrayList<Integer> getMedicineIds() {
         return medicineIds;
     }
 
-    public String getMinorSymptom() {
+    public ArrayList<String>getMinorSymptom() {
         return minorSymptom;
     }
 }
