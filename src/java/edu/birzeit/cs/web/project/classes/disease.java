@@ -9,6 +9,6 @@ package edu.birzeit.cs.web.project.classes;
  *
  * @author jamal
  */
-public class diseases {
+public class disease {
     
 }
