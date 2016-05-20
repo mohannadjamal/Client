@@ -50,8 +50,23 @@ public class PharamacySolutionService {
      */
     @WebMethod(operationName = "getCure")
     public ArrayList<Medicine> getCure(@WebParam(name = "diseaseId") int diseaseId ) {
-        //TODO write your implementation code here:
-        // Get the list of medicines for the disease from its id
+        
+        ArrayList<Medicine> medsToReturn = new ArrayList<>();
+        
+        for (int i = 0; i < parser.diseases.size(); i++)
+            if (parser.diseases.get(i).getId() == diseaseId) {
+                
+                ArrayList<Integer> foundIds =  parser.diseases.get(i).getMedicineIds();
+                
+                for (int j = 0; j < foundIds.size(); j++)
+                    for (int k = 0; k < parser.meds.size(); k++)
+                        if (parser.meds.get(k).getId() == foundIds.get(j))
+                            medsToReturn.add(parser.meds.get(k));
+                    
+                return medsToReturn;
+                
+            }
+        
         return null;
     }
 
