@@ -37,5 +37,5 @@ public class Medicine {
     public String getContents() {
         return contents;
     }
-
+    
 }

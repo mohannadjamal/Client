@@ -23,11 +23,6 @@ public class ParsingDOM {
     public ArrayList<Medicine> meds = new ArrayList<Medicine>();
     public ArrayList<Pharmacy> pharmacies = new ArrayList<Pharmacy>();
 
-    public static void main(String[] args) throws Exception {
-        ParsingDOM p = new ParsingDOM();
-
-    }
-
     public ParsingDOM() {
         try {
             parseXML();
@@ -41,7 +36,6 @@ public class ParsingDOM {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = factory.newDocumentBuilder();
         String xmlLoc = new File("src").getAbsolutePath() + "\\java\\edu\\birzeit\\cs\\project\\xml\\";
-        System.out.println(xmlLoc);
         Document docDise = docBuilder.parse(new FileInputStream(xmlLoc + "diseases.xml"));
         NodeList listDise = docDise.getElementsByTagName("*");
 

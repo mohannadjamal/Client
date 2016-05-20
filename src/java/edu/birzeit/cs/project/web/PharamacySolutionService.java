@@ -10,6 +10,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import edu.birzeit.cs.project.classes.*;
+import javax.jws.Oneway;
 
 /**
  *
@@ -19,6 +20,7 @@ import edu.birzeit.cs.project.classes.*;
 public class PharamacySolutionService {
 
     ParsingDOM parser = new ParsingDOM();
+    WritingDOM report = new WritingDOM();
 
     /**
      * Web service operation
@@ -53,24 +55,28 @@ public class PharamacySolutionService {
      * Web service operation
      */
     @WebMethod(operationName = "getCure")
-    public ArrayList<Medicine> getCure(@WebParam(name = "diseaseId") int diseaseId ) {
-        
+    public ArrayList<Medicine> getCure(@WebParam(name = "diseaseId") int diseaseId) {
+
         ArrayList<Medicine> medsToReturn = new ArrayList<>();
-        
-        for (int i = 0; i < parser.diseases.size(); i++)
+
+        for (int i = 0; i < parser.diseases.size(); i++) {
             if (parser.diseases.get(i).getId() == diseaseId) {
-                
-                ArrayList<Integer> foundIds =  parser.diseases.get(i).getMedicineIds();
-                
-                for (int j = 0; j < foundIds.size(); j++)
-                    for (int k = 0; k < parser.meds.size(); k++)
-                        if (parser.meds.get(k).getId() == foundIds.get(j))
+
+                ArrayList<Integer> foundIds = parser.diseases.get(i).getMedicineIds();
+
+                for (int j = 0; j < foundIds.size(); j++) {
+                    for (int k = 0; k < parser.meds.size(); k++) {
+                        if (parser.meds.get(k).getId() == foundIds.get(j)) {
                             medsToReturn.add(parser.meds.get(k));
-                    
+                        }
+                    }
+                }
+
                 return medsToReturn;
-                
+
             }
-        
+        }
+
         return null;
     }
 
@@ -136,5 +142,24 @@ public class PharamacySolutionService {
         }
         return null;
     }
+//    PROBLEMS WITH USING SERVICES
+//    /**
+//     * Web service operation
+//     */
+//    @WebMethod(operationName = "Order")
+//    @Oneway
+//    public void Order(@WebParam(name = "pharmId") int pharmId, @WebParam(name = "medId") int medId) {
+//        //Adds a report of the chosen pharmacy to get a medicine from to reports.xml
+//        Pharmacy pharm = getPharmacy(pharmId);
+//        Medicine med = getMedicine(medId);
+//        if (pharm != null && med != null) {
+//            ArrayList<Pharmacy> temp = getPharmacies(medId);
+//            for (int i = 0; i < temp.size(); i++) {
+//                if (temp.get(i).getId() == pharmId) {
+//                    report.write(pharm.getName(), pharm.getLocation(), med.getName());
+//                }
+//            }
+//        }
+//    }
 
 }

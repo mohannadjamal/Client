@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><reports>
+
+    <report ticket="0">
+        <PharmacyName>Das</PharmacyName>
+        <PharmacyLocation>sda</PharmacyLocation>
+        <Medicine>asd</Medicine>
+    </report>
+</reports>
