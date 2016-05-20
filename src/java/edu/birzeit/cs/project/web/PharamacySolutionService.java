@@ -17,14 +17,32 @@ import edu.birzeit.cs.project.classes.*;
 @WebService(serviceName = "PharamacySolutionService")
 public class PharamacySolutionService {
 
+    ParsingDOM parser = new ParsingDOM();
     /**
      * Web service operation
      */
     @WebMethod(operationName = "diagnose")
     public ArrayList<Disease> diagnose(@WebParam(name = "symptoms") ArrayList symptoms) {
-        //TODO write your implementation code here:
-        // Send an array of symptomps and return matching dieseases with such symptomps
-        return null;
+        
+        ArrayList<Disease> diseasesToReturn = new ArrayList<>();
+        
+        for (int i = 0; i < symptoms.size(); i++)
+            for (int j = 0; j < parser.diseases.size(); j++) {
+                
+                if (parser.diseases.get(j).getMajorSymptom().equals(symptoms.get(i))) {
+                    diseasesToReturn.add(parser.diseases.get(j));
+                    continue;
+                }
+                
+                for (int k = 0; k < parser.diseases.get(j).getMinorSymptom().size(); k++)
+                    if (parser.diseases.get(j).getMinorSymptom().get(k).equals(symptoms.get(i))) {
+                        diseasesToReturn.add(parser.diseases.get(j));
+                        break;
+                    }
+            }
+        
+        return diseasesToReturn;
+        
     }
 
     /**
