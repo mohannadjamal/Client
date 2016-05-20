@@ -31,7 +31,7 @@ public class PharamacySolutionService {
                 
                 if (parser.diseases.get(j).getMajorSymptom().equals(symptoms.get(i))) {
                     diseasesToReturn.add(parser.diseases.get(j));
-                    break;
+                    continue;
                 }
                 
                 for (int k = 0; k < parser.diseases.get(j).getMinorSymptom().size(); k++)
