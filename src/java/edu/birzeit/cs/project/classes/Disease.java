@@ -15,14 +15,16 @@ public class Disease {
     private int id;
     private String name;
     private ArrayList<Integer> medicineIds;
+    private String organism;
     private String cause;
     private String majorSymptom;
     private ArrayList<String> minorSymptom;
 
-    public Disease(int id, String name, ArrayList<Integer> medicineIds, String cause, String majorSymptom, ArrayList<String> minorSymptom) {
+    public Disease(int id, String name, ArrayList<Integer> medicineIds, String organism, String cause, String majorSymptom, ArrayList<String> minorSymptom) {
         this.id = id;
         this.name = name;
         this.medicineIds = medicineIds;
+        this.organism = organism;
         this.cause = cause;
         this.majorSymptom = majorSymptom;
         this.minorSymptom = minorSymptom;
@@ -42,6 +44,10 @@ public class Disease {
         return cause;
     }
 
+    public String getOrganism() {
+        return organism;
+    }
+    
     public String getMajorSymptom() {
         return majorSymptom;
     }
@@ -53,4 +59,5 @@ public class Disease {
     public ArrayList<String>getMinorSymptom() {
         return minorSymptom;
     }
+    
 }
