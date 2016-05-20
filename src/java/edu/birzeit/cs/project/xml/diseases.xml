@@ -21,9 +21,9 @@
  </medicines>
  <organism>Head</organism>
  <cause>Lack of water and food</cause>
- <majorsymptomp>Wild pain in the head</majorsymptomp>
- <minorsymptomps>
-   <minorsymptomp>Dizzeness</minorsymptomp>
- </minorsymptomps>
+ <majorsymptom>Wild pain in the head</majorsymptom>
+ <minorsymptoms>
+   <minorsymptom>Dizzeness</minorsymptom>
+ </minorsymptoms>
 </disease>
 </diseases>
