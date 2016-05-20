@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <medicines>
-<medicine id="0">
- <name>RT Inhibitor</name>
- <price>2000</price>
- <majorcontent>Carbon (Not correct)</majorcontent>
-</medicine>
-<medicine id="1">
- <name>Fusion Inhibitor</name>
- <price>1500</price>
- <majorcontent>Carbon (Not correct)</majorcontent>
-</medicine>
-<medicine id="2">
- <name>Aspirin</name>
- <price>1500</price>
- <majorcontent>2-(Acetyloxy)Benzoic Acid</majorcontent>
-</medicine>
+    <medicine id="0">
+        <name>RT Inhibitor</name>
+        <price>2000</price>
+        <majorcontent>Carbon (Not correct)</majorcontent>
+    </medicine>
+    <medicine id="1">
+        <name>Fusion Inhibitor</name>
+        <price>1500</price>
+        <majorcontent>Carbon (Not correct)</majorcontent>
+    </medicine>
+    <medicine id="2">
+        <name>Aspirin</name>
+        <price>1500</price>
+        <majorcontent>2-(Acetyloxy)Benzoic Acid</majorcontent>
+    </medicine>
 </medicines>
