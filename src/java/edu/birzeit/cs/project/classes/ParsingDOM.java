@@ -5,6 +5,7 @@
  */
 package edu.birzeit.cs.project.classes;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -39,15 +40,16 @@ public class ParsingDOM {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = factory.newDocumentBuilder();
-
-        Document docDise = docBuilder.parse(new FileInputStream("diseases.xml"));
+        String xmlLoc = new File("src").getAbsolutePath() + "\\java\\edu\\birzeit\\cs\\project\\xml\\";
+        System.out.println(xmlLoc);
+        Document docDise = docBuilder.parse(new FileInputStream(xmlLoc + "diseases.xml"));
         NodeList listDise = docDise.getElementsByTagName("*");
 
-        Document docMedi = docBuilder.parse(new FileInputStream("medicines.xml"));
+        Document docMedi = docBuilder.parse(new FileInputStream(xmlLoc + "medicines.xml"));
         NodeList listMedi = docMedi.getElementsByTagName("*");
 
-        Document docPharm = docBuilder.parse(new FileInputStream("pharmcies.xml"));
-        NodeList listPharm = docMedi.getElementsByTagName("*");
+        Document docPharm = docBuilder.parse(new FileInputStream(xmlLoc + "pharmacies.xml"));
+        NodeList listPharm = docPharm.getElementsByTagName("*");
 
         int disId = 0;
         String disName = null;
@@ -148,10 +150,6 @@ public class ParsingDOM {
             }
         }
 
-        for (int i = 0; i < meds.size(); i++) {
-            System.out.println(meds.get(i));
-        }
-
         //Pharmacies
         int pharmId = 0;
         String pharmName = null;
@@ -160,12 +158,12 @@ public class ParsingDOM {
 
         tagCounter = -1;
         for (int i = 0; i < listPharm.getLength(); i++) {
-
             Element element = (Element) listPharm.item(i);
             String nodeName = element.getNodeName();
 
             if (nodeName.equals("pharmacy")) {
                 pharmId = Integer.parseInt(element.getAttribute("id"));
+
             } else if (nodeName.equals("name")) {
                 pharmName = element.getChildNodes().item(0).getNodeValue();
             } else if (nodeName.equals("location")) {
@@ -173,28 +171,37 @@ public class ParsingDOM {
 
             } else if (nodeName.equals("medicines")) {
 
-                NodeList pharmListMediIds = element.getElementsByTagName("*");
-                for (int j = 0; j < pharmListMediIds.getLength(); j++) {
+                NodeList listMediIds = element.getElementsByTagName("*");
+                for (int j = 0; j < listMediIds.getLength(); j++) {
 
-                    Element pharmMedId = (Element) pharmListMediIds.item(j);
-                    pharmMedicineIds.add(Integer.parseInt(pharmMedId.getFirstChild().getNodeValue()));
+                    Element xmedId = (Element) listMediIds.item(j);
+                    medicineIds.add(Integer.parseInt(xmedId.getFirstChild().getNodeValue()));
 
                 }
 
-                i += pharmListMediIds.getLength();
+                i += listMediIds.getLength();
 
             }
-            if (++tagCounter == 3) {
 
-                pharmacies.add(new Pharmacy(pharmId, pharmName, pharmLocation, pharmMedicineIds));
+            if (++tagCounter == 3) {
+                pharmacies.add(new Pharmacy(pharmId, pharmName, pharmLocation, medicineIds));
                 tagCounter = 0;
 
                 pharmId = 0;
                 pharmName = null;
                 pharmLocation = null;
+                medicineIds.clear();
 
             }
+
         }
+        for (int f = 0; f < pharmacies.size(); f++) {
+            System.out.println(pharmacies.get(f).getName() + " Medi ids");
+            for (int l = 0; l < pharmacies.get(f).getMedicineIds().size(); l++) {
+                System.out.println(pharmacies.get(f).getMedicineIds().get(l));
+            }
+        }
+
     }
 
 }

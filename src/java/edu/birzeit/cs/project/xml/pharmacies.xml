@@ -10,7 +10,7 @@
     </pharmacy>
     <pharmacy id="1">
         <name>Kanaan Pharmacy </name>
-        <location>12th st, Al Ersal, Al Bireh</location>
+        <location>42th st, Beit Hanina, Jerusalem</location>
         <medicines>
             <medicine>0</medicine>
             <medicine>1</medicine>
