@@ -183,23 +183,17 @@ public class ParsingDOM {
 
             }
 
-            if (++tagCounter == 3) {
+            if (++tagCounter == 4) {
                 pharmacies.add(new Pharmacy(pharmId, pharmName, pharmLocation, medicineIds));
                 tagCounter = 0;
 
                 pharmId = 0;
                 pharmName = null;
                 pharmLocation = null;
-                medicineIds.clear();
+                medicineIds = new ArrayList<Integer>();
 
             }
 
-        }
-        for (int f = 0; f < pharmacies.size(); f++) {
-            System.out.println(pharmacies.get(f).getName() + " Medi ids");
-            for (int l = 0; l < pharmacies.get(f).getMedicineIds().size(); l++) {
-                System.out.println(pharmacies.get(f).getMedicineIds().get(l));
-            }
         }
 
     }
