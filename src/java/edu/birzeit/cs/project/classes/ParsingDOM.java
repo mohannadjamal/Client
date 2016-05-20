@@ -36,7 +36,7 @@ public class ParsingDOM {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = factory.newDocumentBuilder();
         String xmlLoc = new File("src").getAbsolutePath() + "\\java\\edu\\birzeit\\cs\\project\\xml\\";
-
+        
         Document docDise = docBuilder.parse(new FileInputStream(xmlLoc + "diseases.xml"));
         NodeList listDise = docDise.getElementsByTagName("*");
 
