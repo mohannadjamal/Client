@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pharmacies>
+    <pharmacy id="0">
+        <name>Yabous Pharmacy </name>
+        <location>42th st, Beit Hanina, Jerusalem</location>
+        <medicines>
+            <medicine>1</medicine>
+            <medicine>2</medicine>
+        </medicines>
+    </pharmacy>
+    <pharmacy id="1">
+        <name>Kanaan Pharmacy </name>
+        <location>12th st, Al Ersal, Al Bireh</location>
+        <medicines>
+            <medicine>0</medicine>
+            <medicine>1</medicine>
+        </medicines>
+    </pharmacy>
+</pharmacies>
