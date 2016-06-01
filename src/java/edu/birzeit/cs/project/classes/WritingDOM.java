@@ -33,7 +33,7 @@ public class WritingDOM {
     public void write(String pharmName, String pharmLoc, String medicine) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = factory.newDocumentBuilder();
-        String xmlLoc = new File("src").getAbsolutePath() + "\\java\\edu\\birzeit\\cs\\project\\xml\\";
+        String xmlLoc = "/home/mohannad/NetBeansProjects/Course-Project/src/java/edu/birzeit/cs/project/xml/";
         Document doc = docBuilder.parse(new FileInputStream(xmlLoc + "reports.xml"));
 
         Node root = doc.getFirstChild();

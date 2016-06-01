@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><reports>
 
     <report ticket="0">
-        <PharmacyName>Das</PharmacyName>
-        <PharmacyLocation>sda</PharmacyLocation>
-        <Medicine>asd</Medicine>
+        <PharmacyName>Yabous Pharmacy </PharmacyName>
+        <PharmacyLocation>42th st, Beit Hanina, Jerusalem</PharmacyLocation>
+        <Medicine>Fusion Inhibitor</Medicine>
+    </report>
+    <report ticket="1">
+        <PharmacyName>Yabous Pharmacy </PharmacyName>
+        <PharmacyLocation>42th st, Beit Hanina, Jerusalem</PharmacyLocation>
+        <Medicine>Fusion Inhibitor</Medicine>
+    </report>
+    <report ticket="2">
+        <PharmacyName>Kanaan Pharmacy </PharmacyName>
+        <PharmacyLocation>12th st, Al Ersal, Al Bireh</PharmacyLocation>
+        <Medicine>RT Inhibitor</Medicine>
     </report>
 </reports>

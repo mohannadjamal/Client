@@ -35,7 +35,7 @@ public class ParsingDOM {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = factory.newDocumentBuilder();
-        String xmlLoc = new File("src").getAbsolutePath() + "\\java\\edu\\birzeit\\cs\\project\\xml\\";
+        String xmlLoc = "/home/mohannad/NetBeansProjects/Course-Project/src/java/edu/birzeit/cs/project/xml/";
         
         Document docDise = docBuilder.parse(new FileInputStream(xmlLoc + "diseases.xml"));
         NodeList listDise = docDise.getElementsByTagName("*");
@@ -214,7 +214,7 @@ public class ParsingDOM {
             }
 
         }
-
+        System.out.print(" ADNSAKDNASDKASNDAS" + meds.size() + pharmacies.size() + diseases.size());
     }
 
 }

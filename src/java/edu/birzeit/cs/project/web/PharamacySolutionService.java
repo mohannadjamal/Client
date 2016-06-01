@@ -10,6 +10,8 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import edu.birzeit.cs.project.classes.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.Oneway;
 
 /**
@@ -26,28 +28,34 @@ public class PharamacySolutionService {
      * Web service operation
      */
     @WebMethod(operationName = "diagnose")
-    public ArrayList<Disease> diagnose(@WebParam(name = "symptoms") ArrayList symptoms) {
-
+    public String diagnose() {
+        String[] symptoms = {"Immune System Breakdown"};
         ArrayList<Disease> diseasesToReturn = new ArrayList<Disease>();
-
-        for (int i = 0; i < symptoms.size(); i++) {
+        String s= "";
+       
+        for (int i = 0; i < symptoms.length; i++) {
+            s = s + "here ";
             for (int j = 0; j < parser.diseases.size(); j++) {
-
-                if (parser.diseases.get(j).getMajorSymptom().equals(symptoms.get(i))) {
+               s = s + " here " + j;
+                if (parser.diseases.get(j).getMajorSymptom().equals(symptoms[i])) {
                     diseasesToReturn.add(parser.diseases.get(j));
+                    s = s + parser.diseases.get(j).getName();
                     continue;
                 }
 
                 for (int k = 0; k < parser.diseases.get(j).getMinorSymptom().size(); k++) {
-                    if (parser.diseases.get(j).getMinorSymptom().get(k).equals(symptoms.get(i))) {
+                    if (parser.diseases.get(j).getMinorSymptom().get(k).equals(symptoms[i])) {
                         diseasesToReturn.add(parser.diseases.get(j));
+                        s = s + parser.diseases.get(j).getName();
                         break;
                     }
                 }
             }
         }
-
-        return diseasesToReturn;
+        Disease[] f = new Disease[diseasesToReturn.size()];
+        for(int i = 0; i<diseasesToReturn.size();i++)
+            f[i] = diseasesToReturn.get(i);
+        return s;
 
     }
 
@@ -83,6 +91,7 @@ public class PharamacySolutionService {
     /**
      * Web service operation
      */
+    
     @WebMethod(operationName = "getPharmacies")
     public ArrayList<Pharmacy> getPharmacies(@WebParam(name = "medicineid") int medicineid) {
         //Find pharmacies selling a medicine
@@ -124,6 +133,7 @@ public class PharamacySolutionService {
             if (parser.meds.get(i).getId() == medicineId) {
                 return parser.meds.get(i);
             }
+                
         }
         return null;
     }
@@ -143,23 +153,23 @@ public class PharamacySolutionService {
         return null;
     }
 //    PROBLEMS WITH USING SERVICES
-//    /**
-//     * Web service operation
-//     */
-//    @WebMethod(operationName = "Order")
-//    @Oneway
-//    public void Order(@WebParam(name = "pharmId") int pharmId, @WebParam(name = "medId") int medId) {
-//        //Adds a report of the chosen pharmacy to get a medicine from to reports.xml
-//        Pharmacy pharm = getPharmacy(pharmId);
-//        Medicine med = getMedicine(medId);
-//        if (pharm != null && med != null) {
-//            ArrayList<Pharmacy> temp = getPharmacies(medId);
-//            for (int i = 0; i < temp.size(); i++) {
-//                if (temp.get(i).getId() == pharmId) {
-//                    report.write(pharm.getName(), pharm.getLocation(), med.getName());
-//                }
-//            }
-//        }
-//    }
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "Order")
+    public void Order(@WebParam(name = "pharmId") int pharmId, @WebParam(name = "medId") int medId)  {
+        //Adds a report of the chosen pharmacy to get a medicine from to reports.xml
+        for(int i = 0; i<parser.pharmacies.size();i++)
+            if(pharmId == parser.pharmacies.get(i).getId())
+                for(int j = 0; j<parser.pharmacies.get(i).getMedicineIds().size();j++)
+                    if(medId == parser.pharmacies.get(i).getMedicineIds().get(j) )
+                        for(int k = 0; k<parser.meds.size();k++)
+                            if(medId == parser.meds.get(k).getId())
+                                try {
+                                    report.write(parser.pharmacies.get(i).getName(), parser.pharmacies.get(i).getLocation(), parser.meds.get(k).getName());
+        } catch (Exception ex) {
+            Logger.getLogger(PharamacySolutionService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }
