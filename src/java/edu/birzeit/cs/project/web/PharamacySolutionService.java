@@ -157,7 +157,7 @@ public class PharamacySolutionService {
      * Web service operation
      */
     @WebMethod(operationName = "Order")
-    public void Order(@WebParam(name = "pharmId") int pharmId, @WebParam(name = "medId") int medId)  {
+    public boolean Order(@WebParam(name = "pharmId") int pharmId, @WebParam(name = "medId") int medId)  {
         //Adds a report of the chosen pharmacy to get a medicine from to reports.xml
         for(int i = 0; i<parser.pharmacies.size();i++)
             if(pharmId == parser.pharmacies.get(i).getId())
@@ -167,9 +167,11 @@ public class PharamacySolutionService {
                             if(medId == parser.meds.get(k).getId())
                                 try {
                                     report.write(parser.pharmacies.get(i).getName(), parser.pharmacies.get(i).getLocation(), parser.meds.get(k).getName());
+                                    return true;
         } catch (Exception ex) {
-            Logger.getLogger(PharamacySolutionService.class.getName()).log(Level.SEVERE, null, ex);
+           return false;
         }
+        return false;
     }
 
 }
