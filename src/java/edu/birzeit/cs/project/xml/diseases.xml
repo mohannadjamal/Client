@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diseases>
+    <disease id="0">
+        <name>AIDS</name>
+        <medicines>
+            <medicine>0</medicine>
+            <medicine>1</medicine>
+        </medicines>
+        <organism>Anywhere</organism>
+        <cause>HIV</cause>
+        <majorsymptom>Immune System Breakdown</majorsymptom>
+        <minorsymptoms>
+            <minorsymptom>Influenza-like illness</minorsymptom>
+            <minorsymptom>Weight Loss</minorsymptom>
+        </minorsymptoms>
+    </disease>
+    <disease id="1">
+        <name>Headache</name>
+        <medicines>
+            <medicine>2</medicine>
+        </medicines>
+        <organism>Head</organism>
+        <cause>Lack of water and food</cause>
+        <majorsymptomp>Wild pain in the head</majorsymptomp>
+        <minorsymptomps>
+            <minorsymptomp>Dizzeness</minorsymptomp>
+        </minorsymptomps>
+    </disease>
+</diseases>
