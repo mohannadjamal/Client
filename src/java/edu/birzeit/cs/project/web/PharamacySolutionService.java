@@ -64,8 +64,8 @@ public class PharamacySolutionService {
      * Web service operation
      */
     @WebMethod(operationName = "getCure")
-    public ArrayList<Medicine> getCure(@WebParam(name = "diseaseId") int diseaseId) {
-
+    public String getCure(@WebParam(name = "diseaseId") int diseaseId) {
+        String s = "";
         ArrayList<Medicine> medsToReturn = new ArrayList<>();
 
         for (int i = 0; i < parser.diseases.size(); i++) {
@@ -76,17 +76,17 @@ public class PharamacySolutionService {
                 for (int j = 0; j < foundIds.size(); j++) {
                     for (int k = 0; k < parser.meds.size(); k++) {
                         if (parser.meds.get(k).getId() == foundIds.get(j)) {
-                            medsToReturn.add(parser.meds.get(k));
+                            s = s + parser.meds.get(k).list();
                         }
                     }
                 }
 
-                return medsToReturn;
+                return s;
 
             }
         }
 
-        return null;
+        return "ERROR: Check inputs";
     }
 
     /**
@@ -195,7 +195,7 @@ public class PharamacySolutionService {
     @WebMethod(operationName = "listMedicine")
     public String listMedicine() {
         String s = "";
- 
+
         //TODO write your implementation code here:
         for (int i = 0; i < parser.meds.size(); i++) {
             s = s + parser.meds.get(i).list();
