@@ -40,8 +40,13 @@ public class Pharmacy {
     public String getName() {
         return name;
     }
-    public String toString(){
-        return name + " " + location + " " + medicineIds.toString();
+
+    public String list() {
+        String s = "---ID: " + id + " Name: " + name + "\nLocation: " + location;
+        for (int i = 0; i < medicineIds.size(); i++) {
+            s = s + " [" + medicineIds.get(i) + "] ";
+        }
+        s = s + "\n";
+        return s;
     }
-    
 }

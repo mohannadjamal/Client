@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://web.project.cs.birzeit.edu/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://web.project.cs.birzeit.edu/">
+
+<xs:element name="Order" type="tns:Order"/>
+
+<xs:element name="OrderResponse" type="tns:OrderResponse"/>
+
+<xs:element name="diagnose" type="tns:diagnose"/>
+
+<xs:element name="diagnoseResponse" type="tns:diagnoseResponse"/>
+
+<xs:element name="getCure" type="tns:getCure"/>
+
+<xs:element name="getCureResponse" type="tns:getCureResponse"/>
+
+<xs:element name="getDisease" type="tns:getDisease"/>
+
+<xs:element name="getDiseaseResponse" type="tns:getDiseaseResponse"/>
+
+<xs:element name="getMedicine" type="tns:getMedicine"/>
+
+<xs:element name="getMedicineResponse" type="tns:getMedicineResponse"/>
+
+<xs:element name="getPharmacies" type="tns:getPharmacies"/>
+
+<xs:element name="getPharmaciesResponse" type="tns:getPharmaciesResponse"/>
+
+<xs:element name="getPharmacy" type="tns:getPharmacy"/>
+
+<xs:element name="getPharmacyResponse" type="tns:getPharmacyResponse"/>
+
+<xs:element name="listDisease" type="tns:listDisease"/>
+
+<xs:element name="listDiseaseResponse" type="tns:listDiseaseResponse"/>
+
+<xs:complexType name="listDisease">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="listDiseaseResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="diagnose">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="diagnoseResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCure">
+<xs:sequence>
+<xs:element name="diseaseId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCureResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:medicine" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="medicine">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="Order">
+<xs:sequence>
+<xs:element name="pharmId" type="xs:int"/>
+<xs:element name="medId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="OrderResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPharmacy">
+<xs:sequence>
+<xs:element name="pharmacyId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPharmacyResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pharmacy" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pharmacy">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getPharmacies">
+<xs:sequence>
+<xs:element name="medicineid" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPharmaciesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pharmacy" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMedicine">
+<xs:sequence>
+<xs:element name="medicineId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMedicineResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:medicine" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDisease">
+<xs:sequence>
+<xs:element name="diseaseId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDiseaseResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:disease" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="disease">
+<xs:sequence/>
+</xs:complexType>
+</xs:schema>

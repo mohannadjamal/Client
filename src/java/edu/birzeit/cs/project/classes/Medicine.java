@@ -10,6 +10,7 @@ package edu.birzeit.cs.project.classes;
  * @author jamal
  */
 public class Medicine {
+
     private int id;
     private String name;
     private double price;
@@ -37,5 +38,10 @@ public class Medicine {
     public String getContents() {
         return contents;
     }
-    
+
+    public String list() {
+        String s = "--ID: " + id + " Name: " + name + " Price: " +price +"$";
+        s = s + "\n";
+        return s;
+    }
 }

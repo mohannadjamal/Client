@@ -59,5 +59,12 @@ public class Disease {
     public ArrayList<String>getMinorSymptom() {
         return minorSymptom;
     }
-    
+    public String list(){
+        String s = "---ID: "+ id + " Name: " + name + " Cause: "+ cause +" Medicine Ids: ";
+        for(int i = 0; i<medicineIds.size();i++){
+           s = s+" [" + medicineIds.get(i)+"] ";
+        }
+        s = s+"\n";
+        return s;
+    }
 }

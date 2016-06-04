@@ -37,6 +37,7 @@ public class Client extends Application {
             + "Note: We are not responsible for your deaths\n"
             + "(which is gonna be a lot).\n"
             + "Happy curing!");
+    private Label secondaryMessage = new Label("");
 
     public static void main(String[] args) {
 
@@ -61,11 +62,11 @@ public class Client extends Application {
         buttonMedicine.setTooltip(new Tooltip("Display medicnes list"));
         buttonPharmacy.setTooltip(new Tooltip("Display pharmacies list"));
         buttonOrder.setTooltip(new Tooltip("Order a medicne from a Pharmacy"));
-        
-        buttonDiagnose.setVisible(false);
+
+        buttonPharmacies.setVisible(false);
         buttonCure.setVisible(false);
         buttonOrder.setVisible(false);
-        
+
         TextField id1 = new TextField(),
                 id2 = new TextField();
 
@@ -73,37 +74,74 @@ public class Client extends Application {
         id2.setPromptText("Second id");
         id1.setVisible(false);
         id2.setVisible(false);
-        
+
         buttonDiagnose.setOnAction(e -> {
+            secondaryMessage.setText("");
         });
 
         buttonCure.setOnAction(e -> {
-
+            secondaryMessage.setText("");
         });
 
         buttonPharmacies.setOnAction(e -> {
-
+            secondaryMessage.setText("");
         });
 
         buttonDisease.setOnAction(e -> {
+            secondaryMessage.setText("");
             mainMessage.setText(listDisease());
+            buttonCure.setVisible(true);
+            buttonPharmacies.setVisible(false);
+            buttonOrder.setVisible(false);
+            id1.setVisible(true);
+            id2.setVisible(false);
 
         });
 
         buttonMedicine.setOnAction(e -> {
+            secondaryMessage.setText("");
             mainMessage.setText(listMedicine());
+            buttonCure.setVisible(false);
+            buttonPharmacies.setVisible(true);
+            buttonOrder.setVisible(false);
+            id1.setVisible(true);
+            id2.setVisible(false);
 
         });
 
         buttonPharmacy.setOnAction(e -> {
+            secondaryMessage.setText("");
             mainMessage.setText(listPharmacy());
+            buttonCure.setVisible(false);
+            buttonPharmacies.setVisible(false);
+            buttonOrder.setVisible(true);
+            id1.setVisible(true);
+            id2.setVisible(true);
+
+            id1.setText("");
+            id2.setText("");
+            id1.setPromptText("Pharmacy you want to buy it from");
+            id2.setPromptText("Medicine you want to buy.");
         });
 
         buttonOrder.setOnAction(e -> {
+            secondaryMessage.setText("");
+            if (id1.getText().equals("") && id2.getText().equals("") || (!id2.isVisible() && !id1.isVisible())) {
+                secondaryMessage.setText("ERROR: Check Inputs ");
+            } else {
+                int firstid = Integer.parseInt(id1.getText());
+                int secondid = Integer.parseInt(id1.getText());
+                if (order(firstid, secondid)) {
+                    secondaryMessage.setText("Order complete, transaction reported");
+                }else{
+                    secondaryMessage.setText("ERROR: Check inputs");
 
+                }
+
+            }
         });
 
-        VBox paneButtonsCountries = new VBox(20, buttonDisease, buttonMedicine, buttonPharmacy);
+        VBox paneButtonsCountries = new VBox(20, buttonDisease, buttonMedicine, buttonPharmacy, buttonDiagnose);
 
         BorderPane paneLeft = new BorderPane(null, null, null, null, paneButtonsCountries);
 
@@ -112,14 +150,23 @@ public class Client extends Application {
         paneLeft.setPadding(new Insets(20));
         paneLeft.setStyle(Styles.BACKGROUND_GREEN);
 
+        VBox inputs = new VBox(id1, id2);
+        inputs.setAlignment(Pos.BOTTOM_RIGHT);
+        buttonCure.setAlignment(Pos.BOTTOM_LEFT);
+        buttonPharmacies.setAlignment(Pos.BOTTOM_LEFT);
+        buttonOrder.setAlignment(Pos.BASELINE_LEFT);
+
         mainMessage.setAlignment(Pos.CENTER);
-        buttonDiagnose.setAlignment(Pos.BOTTOM_LEFT);
-        buttonOrder.setAlignment(Pos.BOTTOM_RIGHT);
-        id1.setAlignment(Pos.BOTTOM_RIGHT);
-        id2.setAlignment(Pos.BOTTOM_RIGHT);
-        VBox paneMess = new VBox(mainMessage);
+        secondaryMessage.setAlignment(Pos.TOP_CENTER);
+
+        VBox secondaryButtons = new VBox(buttonCure, buttonPharmacies, buttonOrder, inputs);
+        secondaryButtons.setAlignment(Pos.BASELINE_LEFT);
+        secondaryButtons.setSpacing(5);
+
+        VBox paneMess = new VBox(secondaryMessage, mainMessage, secondaryButtons);
 
         mainMessage.setStyle(Styles.TITLE_WHITE);
+        secondaryMessage.setStyle(Styles.TITLE_BLACK);
         paneMess.setStyle("-fx-background-color: darkgray;");
         paneMess.setAlignment(Pos.CENTER);
 
@@ -153,6 +200,18 @@ public class Client extends Application {
         edu.birzeit.cs.project.web.PharamacySolutionService_Service service = new edu.birzeit.cs.project.web.PharamacySolutionService_Service();
         edu.birzeit.cs.project.web.PharamacySolutionService port = service.getPharamacySolutionServicePort();
         return port.listPharmacy();
+    }
+
+    private static java.util.List<edu.birzeit.cs.project.web.Medicine> getCure(int diseaseId) {
+        edu.birzeit.cs.project.web.PharamacySolutionService_Service service = new edu.birzeit.cs.project.web.PharamacySolutionService_Service();
+        edu.birzeit.cs.project.web.PharamacySolutionService port = service.getPharamacySolutionServicePort();
+        return port.getCure(diseaseId);
+    }
+
+    private static boolean order(int pharmId, int medId) {
+        edu.birzeit.cs.project.web.PharamacySolutionService_Service service = new edu.birzeit.cs.project.web.PharamacySolutionService_Service();
+        edu.birzeit.cs.project.web.PharamacySolutionService port = service.getPharamacySolutionServicePort();
+        return port.order(pharmId, medId);
     }
 
 }
