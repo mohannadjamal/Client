@@ -68,12 +68,8 @@
 
 <xs:complexType name="getCureResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:medicine" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="medicine">
-<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="listPharmacy">
@@ -147,6 +143,10 @@
 <xs:sequence>
 <xs:element name="return" type="tns:medicine" minOccurs="0"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="medicine">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="getDisease">

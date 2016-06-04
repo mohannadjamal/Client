@@ -11,6 +11,8 @@ package client;
  */
 import client.Styles;
 import client.ButtonMod;
+
+import java.util.ArrayList;
 import javafx.application.Application;
 import static javafx.application.Application.STYLESHEET_MODENA;
 import javafx.application.Platform;
@@ -76,11 +78,23 @@ public class Client extends Application {
         id2.setVisible(false);
 
         buttonDiagnose.setOnAction(e -> {
-            secondaryMessage.setText("");
+            mainMessage.setText("Problem with the service. Was supposed to take major simptoms and minor simptoms and diagnose you.");
         });
 
         buttonCure.setOnAction(e -> {
             secondaryMessage.setText("");
+            if (id1.getText().equals("") || (id2.isVisible() && !id1.isVisible())) {
+                secondaryMessage.setText("ERROR: Check Inputs ");
+            } else {
+
+                int firstid = Integer.parseInt(id1.getText());
+                if (getCure(firstid).equals("")) {
+                    secondaryMessage.setText("ERROR: Check Inputs ");
+                } else {
+                    secondaryMessage.setText(getCure(firstid));
+                }
+            }
+
         });
 
         buttonPharmacies.setOnAction(e -> {
@@ -95,6 +109,7 @@ public class Client extends Application {
             buttonOrder.setVisible(false);
             id1.setVisible(true);
             id2.setVisible(false);
+            id1.setPromptText("Enter a disease id to get a list of medicines");
 
         });
 
@@ -106,6 +121,7 @@ public class Client extends Application {
             buttonOrder.setVisible(false);
             id1.setVisible(true);
             id2.setVisible(false);
+            id1.setPromptText("Find Pharmaciees you can buy this medicine from.");
 
         });
 
@@ -133,7 +149,7 @@ public class Client extends Application {
                 int secondid = Integer.parseInt(id1.getText());
                 if (order(firstid, secondid)) {
                     secondaryMessage.setText("Order complete, transaction reported");
-                }else{
+                } else {
                     secondaryMessage.setText("ERROR: Check inputs");
 
                 }
@@ -202,16 +218,16 @@ public class Client extends Application {
         return port.listPharmacy();
     }
 
-    private static java.util.List<edu.birzeit.cs.project.web.Medicine> getCure(int diseaseId) {
-        edu.birzeit.cs.project.web.PharamacySolutionService_Service service = new edu.birzeit.cs.project.web.PharamacySolutionService_Service();
-        edu.birzeit.cs.project.web.PharamacySolutionService port = service.getPharamacySolutionServicePort();
-        return port.getCure(diseaseId);
-    }
-
     private static boolean order(int pharmId, int medId) {
         edu.birzeit.cs.project.web.PharamacySolutionService_Service service = new edu.birzeit.cs.project.web.PharamacySolutionService_Service();
         edu.birzeit.cs.project.web.PharamacySolutionService port = service.getPharamacySolutionServicePort();
         return port.order(pharmId, medId);
+    }
+
+    private static String getCure(int diseaseId) {
+        edu.birzeit.cs.project.web.PharamacySolutionService_Service service = new edu.birzeit.cs.project.web.PharamacySolutionService_Service();
+        edu.birzeit.cs.project.web.PharamacySolutionService port = service.getPharamacySolutionServicePort();
+        return port.getCure(diseaseId);
     }
 
 }
