@@ -195,6 +195,7 @@ public class PharamacySolutionService {
     @WebMethod(operationName = "listMedicine")
     public String listMedicine() {
         String s = "";
+ 
 
         //TODO write your implementation code here:
         for (int i = 0; i < parser.meds.size(); i++) {
