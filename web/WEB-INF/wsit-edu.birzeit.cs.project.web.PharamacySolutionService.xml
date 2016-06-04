@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="PharamacySolutionService" targetNamespace="http://web.project.cs.birzeit.edu/" xmlns:tns="http://web.project.cs.birzeit.edu/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:fi="http://java.sun.com/xml/ns/wsit/2006/09/policy/fastinfoset/service" xmlns:tcp="http://java.sun.com/xml/ns/wsit/2006/09/policy/soaptcp/service" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" 
+ >
+    <message name="diagnose"/>
+    <message name="diagnoseResponse"/>
+    <message name="getCure"/>
+    <message name="getCureResponse"/>
+    <message name="getPharmacies"/>
+    <message name="getPharmaciesResponse"/>
+    <message name="getPharmacy"/>
+    <message name="getPharmacyResponse"/>
+    <message name="getMedicine"/>
+    <message name="getMedicineResponse"/>
+    <message name="getDisease"/>
+    <message name="getDiseaseResponse"/>
+    <message name="Order"/>
+    <message name="OrderResponse"/>
+    <message name="listMedicine"/>
+    <message name="listMedicineResponse"/>
+    <message name="listPharmacy"/>
+    <message name="listPharmacyResponse"/>
+    <portType name="PharamacySolutionService">
+        <operation name="diagnose">
+            <input message="tns:diagnose"/>
+            <output message="tns:diagnoseResponse"/>
+        </operation>
+        <operation name="getCure">
+            <input message="tns:getCure"/>
+            <output message="tns:getCureResponse"/>
+        </operation>
+        <operation name="getPharmacies">
+            <input message="tns:getPharmacies"/>
+            <output message="tns:getPharmaciesResponse"/>
+        </operation>
+        <operation name="getPharmacy">
+            <input message="tns:getPharmacy"/>
+            <output message="tns:getPharmacyResponse"/>
+        </operation>
+        <operation name="getMedicine">
+            <input message="tns:getMedicine"/>
+            <output message="tns:getMedicineResponse"/>
+        </operation>
+        <operation name="getDisease">
+            <input message="tns:getDisease"/>
+            <output message="tns:getDiseaseResponse"/>
+        </operation>
+        <operation name="Order">
+            <input message="tns:Order"/>
+            <output message="tns:OrderResponse"/>
+        </operation>
+        <operation name="listMedicine">
+            <input message="tns:listMedicine"/>
+            <output message="tns:listMedicineResponse"/>
+        </operation>
+        <operation name="listPharmacy">
+            <input message="tns:listPharmacy"/>
+            <output message="tns:listPharmacyResponse"/>
+        </operation>
+    </portType>
+    <binding name="PharamacySolutionServicePortBinding" type="tns:PharamacySolutionService">
+        <wsp:PolicyReference URI="#PharamacySolutionServicePortBindingPolicy"/>
+        <operation name="diagnose">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getCure">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getPharmacies">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getPharmacy">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getMedicine">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getDisease">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="Order">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="listMedicine">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="listPharmacy">
+            <input/>
+            <output/>
+        </operation>
+    </binding>
+    <service name="PharamacySolutionService">
+        <port name="PharamacySolutionServicePort" binding="tns:PharamacySolutionServicePortBinding"/>
+    </service>
+    <wsp:Policy wsu:Id="PharamacySolutionServicePortBindingPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All/>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="PharamacySolutionServicePortBinding_listMedicine_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="PharamacySolutionServicePortBinding_listMedicine_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="PharamacySolutionServicePortBinding_listDisease_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="PharamacySolutionServicePortBinding_listDisease_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>

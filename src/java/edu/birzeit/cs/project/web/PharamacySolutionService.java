@@ -182,12 +182,34 @@ public class PharamacySolutionService {
     }
 
     @WebMethod(operationName = "listDisease")
-    public String listtDisease() {
+    public String listDisease() {
         String s = "";
         //Retruns a Disease with all of it's info
         //TODO write your implementation code here:
         for (int i = 0; i < parser.diseases.size(); i++) {
-            s = s +parser.diseases.get(i).list();         
+            s = s + parser.diseases.get(i).list();
+        }
+        return s;
+    }
+
+    @WebMethod(operationName = "listMedicine")
+    public String listMedicine() {
+        String s = "";
+ 
+        //TODO write your implementation code here:
+        for (int i = 0; i < parser.meds.size(); i++) {
+            s = s + parser.meds.get(i).list();
+        }
+        return s;
+    }
+
+    @WebMethod(operationName = "listPharmacy")
+    public String listPharmacy() {
+        String s = "";
+
+        //TODO write your implementation code here:
+        for (int i = 0; i < parser.pharmacies.size(); i++) {
+            s = s + parser.pharmacies.get(i).list();
         }
         return s;
     }

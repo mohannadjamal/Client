@@ -60,7 +60,7 @@ public class Disease {
         return minorSymptom;
     }
     public String list(){
-        String s = "ID: "+ id + " Name: " + name + " Cause: "+ cause +" Medicine Ids: ";
+        String s = "---ID: "+ id + " Name: " + name + " Cause: "+ cause +" Medicine Ids: ";
         for(int i = 0; i<medicineIds.size();i++){
            s = s+" [" + medicineIds.get(i)+"] ";
         }
