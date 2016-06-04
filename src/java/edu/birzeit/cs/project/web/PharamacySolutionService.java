@@ -31,12 +31,12 @@ public class PharamacySolutionService {
     public String diagnose() {
         String[] symptoms = {"Immune System Breakdown"};
         ArrayList<Disease> diseasesToReturn = new ArrayList<Disease>();
-        String s= "";
-       
+        String s = "";
+
         for (int i = 0; i < symptoms.length; i++) {
             s = s + "here ";
             for (int j = 0; j < parser.diseases.size(); j++) {
-               s = s + " here " + j;
+                s = s + " here " + j;
                 if (parser.diseases.get(j).getMajorSymptom().equals(symptoms[i])) {
                     diseasesToReturn.add(parser.diseases.get(j));
                     s = s + parser.diseases.get(j).getName();
@@ -53,8 +53,9 @@ public class PharamacySolutionService {
             }
         }
         Disease[] f = new Disease[diseasesToReturn.size()];
-        for(int i = 0; i<diseasesToReturn.size();i++)
+        for (int i = 0; i < diseasesToReturn.size(); i++) {
             f[i] = diseasesToReturn.get(i);
+        }
         return s;
 
     }
@@ -91,7 +92,6 @@ public class PharamacySolutionService {
     /**
      * Web service operation
      */
-    
     @WebMethod(operationName = "getPharmacies")
     public ArrayList<Pharmacy> getPharmacies(@WebParam(name = "medicineid") int medicineid) {
         //Find pharmacies selling a medicine
@@ -133,7 +133,7 @@ public class PharamacySolutionService {
             if (parser.meds.get(i).getId() == medicineId) {
                 return parser.meds.get(i);
             }
-                
+
         }
         return null;
     }
@@ -153,25 +153,42 @@ public class PharamacySolutionService {
         return null;
     }
 //    PROBLEMS WITH USING SERVICES
+
     /**
      * Web service operation
      */
     @WebMethod(operationName = "Order")
-    public boolean Order(@WebParam(name = "pharmId") int pharmId, @WebParam(name = "medId") int medId)  {
+    public boolean Order(@WebParam(name = "pharmId") int pharmId, @WebParam(name = "medId") int medId) {
         //Adds a report of the chosen pharmacy to get a medicine from to reports.xml
-        for(int i = 0; i<parser.pharmacies.size();i++)
-            if(pharmId == parser.pharmacies.get(i).getId())
-                for(int j = 0; j<parser.pharmacies.get(i).getMedicineIds().size();j++)
-                    if(medId == parser.pharmacies.get(i).getMedicineIds().get(j) )
-                        for(int k = 0; k<parser.meds.size();k++)
-                            if(medId == parser.meds.get(k).getId())
+        for (int i = 0; i < parser.pharmacies.size(); i++) {
+            if (pharmId == parser.pharmacies.get(i).getId()) {
+                for (int j = 0; j < parser.pharmacies.get(i).getMedicineIds().size(); j++) {
+                    if (medId == parser.pharmacies.get(i).getMedicineIds().get(j)) {
+                        for (int k = 0; k < parser.meds.size(); k++) {
+                            if (medId == parser.meds.get(k).getId()) {
                                 try {
                                     report.write(parser.pharmacies.get(i).getName(), parser.pharmacies.get(i).getLocation(), parser.meds.get(k).getName());
                                     return true;
-        } catch (Exception ex) {
-           return false;
+                                } catch (Exception ex) {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         return false;
     }
 
+    @WebMethod(operationName = "listDisease")
+    public String listtDisease() {
+        String s = "";
+        //Retruns a Disease with all of it's info
+        //TODO write your implementation code here:
+        for (int i = 0; i < parser.diseases.size(); i++) {
+            s = s +parser.diseases.get(i).list();         
+        }
+        return s;
+    }
 }
