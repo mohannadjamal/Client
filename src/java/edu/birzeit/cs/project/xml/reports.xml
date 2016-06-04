@@ -15,4 +15,4 @@
         <PharmacyLocation>12th st, Al Ersal, Al Bireh</PharmacyLocation>
         <Medicine>RT Inhibitor</Medicine>
     </report>
-</reports>
+<report ticket="3"><PharmacyName>Kanaan Pharmacy </PharmacyName><PharmacyLocation>12th st, Al Ersal, Al Bireh</PharmacyLocation><Medicine>Fusion Inhibitor</Medicine></report></reports>

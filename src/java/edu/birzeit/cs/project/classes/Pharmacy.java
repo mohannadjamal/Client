@@ -42,7 +42,7 @@ public class Pharmacy {
     }
 
     public String list() {
-        String s = "---ID: " + id + " Name: " + name + "\nLocation: " + location;
+        String s = "---ID: " + id + " Name: " + name + "\nLocation: " + location+ " Medicine IDs: ";
         for (int i = 0; i < medicineIds.size(); i++) {
             s = s + " [" + medicineIds.get(i) + "] ";
         }
